@@ -14,3 +14,57 @@ header {
   justify-content: center;
   padding-bottom: 1rem;
 }
+
+main {
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-style: solid;
+  border-color: lightgray;
+  border-width: .5px;
+  max-width: 400px;
+  margin: .5rem;
+  padding: 0;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 1rem;
+}
+
+.card-header>h2, h5 {
+  margin: 1rem 0 ;
+}
+
+.card-header>h5 {
+  min-width: 90px;
+}
+
+.card-body>img {
+  object-fit: contain;
+  padding: 1rem;
+  float: left;
+}
+
+.card-body p {
+  font-size: 1rem;
+  margin: 0;
+  padding: 1rem 1rem;
+}
+
+.card-footer {
+  clear: left;
+}
+
+#loader {
+  position: absolute;
+  top: 45vh;
+  left: 50vw;
+}

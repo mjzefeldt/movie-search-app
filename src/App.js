@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from './components/Header';
+import Main from './components/Main';
+import Loader from './components/Loader';
 import KEY from './secret';
 import axios from 'axios';
 
@@ -33,29 +35,38 @@ class App extends Component {
     });
   }
 
-  async initialLoad() { 
+  async initialLoad() {     
     this.setState({isLoading: true});
     
-    let search = this.state.search;
-    const url= `https://api.themoviedb.org/3/search/movie?api_key=${KEY.key}&language=en-US&query=${search}&include_adult=false`;
-    
-    try {
-      const result = await axios.get(url);
-      const data = result.data;
-      console.log(data, '<<< data in initial load');
-      console.log(result, '<<< header');
-      console.log(data.total_results, '<<< total results'); 
-      // data.results is movie info
-      // data. hits and page would be used for pagination
+    if (this.state.search === '') {
       this.setState({
-        data: data.results, 
-        current_page: data.page, 
-        total_pages: data.total_pages,
-        total_results: data.total_results, 
+        data: [], 
+        current_page: null, 
+        total_pages: null,
+        total_results: null, 
         isLoading: false
       });
-    } catch(err) { 
-      this.setState({isError: err, isLoading: false});
+    } else {
+      const url= `https://api.themoviedb.org/3/search/movie?api_key=${KEY.key}&language=en-US&query=${this.state.search}&include_adult=false`;
+      
+      try {
+        const result = await axios.get(url);
+        const data = result.data;
+        console.log(data, '<<< data in initial load');
+        console.log(result, '<<< header');
+        console.log(data.total_results, '<<< total results'); 
+        // data.results is movie info
+        // data. hits and page would be used for pagination
+        this.setState({
+          data: data.results, 
+          current_page: data.page, 
+          total_pages: data.total_pages,
+          total_results: data.total_results, 
+          isLoading: false
+        });
+      } catch(err) { 
+        this.setState({isError: err, isLoading: false});
+      }
     }
   }
 
@@ -67,30 +78,19 @@ class App extends Component {
   
   render() {
     
-    const listing = this.state.data.map((item) => {
-
-      return (
-          <div className="card" key={item.id}>
-            <div className="card-header">
-              <h2>{item.title}</h2>
-              <h5>{item.release_date}</h5>
-            </div>
-            <div className="card-body">
-              <img src={`${this.state.base_url}${this.state.poster_sizes[1]}${item.poster_path}`} alt={`${item.name} poster`} />
-              <p>{item.overview}</p>
-            </div>
-            <div className="card-footer">
-              <p>{item.vote_average} - {item.vote_count}</p>
-            </div>
-          </div>
-      );
-    });
+    if (this.state.isError) {
+      return <p>{this.state.isError.message}</p>
+    }
 
     return (
       <Fragment>
         <Header onSearchChange={this.onSearchChange}/>
-        {this.state.isLoading && <div>Loading...</div>}
-        {listing}
+        <Main
+            list={this.state.data} 
+            base_url={this.state.base_url}
+            poster_size={this.state.poster_sizes[1]}
+        />
+        <Loader isLoading={this.state.isLoading} />
       </Fragment>
     );
   }
