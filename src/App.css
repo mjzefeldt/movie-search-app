@@ -68,3 +68,18 @@ main {
   top: 45vh;
   left: 50vw;
 }
+
+/* ul {
+  list-style: none;
+} */
+
+.pagination {
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.pages {
+  padding: 2rem;
+}
