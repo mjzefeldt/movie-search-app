@@ -3,7 +3,6 @@ import ReactPaginate from 'react-paginate';
 
 
 function Pagination ({total_pages, current_page, onPageChange, total_results}) {
-        console.log(total_pages, current_page, onPageChange, total_results, '<<< props in pagination')
         return (
             <Fragment>
                 <div id="pagination-container">
