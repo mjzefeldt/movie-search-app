@@ -1,7 +1,21 @@
+
+
+/* main component layout styles */
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 2
+}
+
 /* header component styles */
 
 header {
-  width: 100vw;
+  width: inherit;
+  max-height: 18vh;
   position: sticky;
   top: 0;
   display: flex;
@@ -16,16 +30,6 @@ header {
   flex-direction: column;
   justify-content: center;
   padding-bottom: 1rem;
-}
-
-/* main component layout styles */
-
-main {
-  margin: 1rem 2rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 /* content card styles for list component */
@@ -108,6 +112,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
 }
 
 #pagination-container p {
@@ -148,13 +153,31 @@ main {
   background-color: yellow;
 }
 
+.page-link-inactive {
+  margin: .5rem;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #fff;
+  color: lightgray;
+  cursor: default; 
+  border-style: none;
+}
+
+.page_link-inactive:hover {
+  cursor: default;
+  border-style: none;
+  background-color: none;
+}
 
 /* footer styles */
 
 footer {
   margin-top: 2rem;
-  bottom: 0;
-  height: 8rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
   background-color: lightgrey;
   display: flex;
   flex-direction: row;

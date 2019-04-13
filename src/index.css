@@ -8,3 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #373D3F;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
