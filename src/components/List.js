@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Ratings from 'react-ratings-declarative';
 
 function List({list, base_url, poster_size}) {
 
@@ -14,7 +15,25 @@ function List({list, base_url, poster_size}) {
               <p>{item.overview}</p>
             </div>
             <div className="card-footer">
-              <p>{item.vote_average} - {item.vote_count}</p>
+              <Ratings
+                rating={parseFloat(item.vote_average)}
+                widgetDimensions="1rem"
+                widgetSpacings=".25rem"
+                widgetRatedColors="yellow"
+                widgetEmptyColors="grey"
+              >
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+              </Ratings>
+              <p>{item.vote_count} votes</p>
             </div>
           </div>
       );
