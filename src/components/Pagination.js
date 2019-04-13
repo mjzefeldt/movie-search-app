@@ -7,18 +7,23 @@ class Pagination extends Component {
     render() {
         return (
             <Fragment>
-                <ReactPaginate 
-                    previousLabel={'<'}
-                    nextLabel={'>'}
-                    breakLabel={'...'}
-                    pageCount={this.props.total_pages}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={4} 
-                    onPageChange={this.props.onPageChange}
-                    containerClassName={'pagination'}
-                    // breakClassName={'break-me'}
-                    pageClassName={'pages'}
-                />
+                <div id="pagination-container">
+                    <ReactPaginate 
+                        previousLabel={'< prev'}
+                        nextLabel={'next >'}
+                        breakLabel={'...'}
+                        pageCount={this.props.total_pages}
+                        marginPagesDisplayed={1}
+                        pageRangeDisplayed={4} 
+                        onPageChange={this.props.onPageChange}
+                        containerClassName={'pagination'}
+                        pageLinkClassName={'page-link'}
+                        activeLinkClassName={'active-page-link'}
+                        previousLinkClassName={'page-link'}
+                        nextLinkClassName={'page-link'}
+                        breakLinkClassName={'page-link'}
+                    />
+                </div>
             </Fragment>
         )
     }

@@ -101,18 +101,21 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Header onSearchChange={this.onSearchChange}/>
-        <Main
-            list={this.state.data} 
-            base_url={this.state.base_url}
-            poster_size={this.state.poster_sizes[1]}
-        />
-        <Loader isLoading={this.state.isLoading} />
-        <Pagination 
-          total_pages={this.state.total_pages}
-          current_page={this.current_page}
-          onPageChange={this.onPageChange}
-        />
+          <Header onSearchChange={this.onSearchChange}/>
+          <Main
+              list={this.state.data} 
+              base_url={this.state.base_url}
+              poster_size={this.state.poster_sizes[1]}
+          />
+          <Loader isLoading={this.state.isLoading} />
+          <Pagination 
+            total_pages={this.state.total_pages}
+            current_page={this.current_page}
+            onPageChange={this.onPageChange}
+          />
+          <footer>
+            <p>Thank you for your consideration!</p>
+          </footer>
       </Fragment>
     );
   }

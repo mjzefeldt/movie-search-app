@@ -1,3 +1,5 @@
+/* header component styles */
+
 header {
   width: 100vw;
   position: sticky;
@@ -16,12 +18,17 @@ header {
   padding-bottom: 1rem;
 }
 
+/* main component layout styles */
+
 main {
   margin: 1rem 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
+/* content card styles for list component */
 
 .card {
   display: flex;
@@ -77,23 +84,58 @@ main {
   background-color: lightgray;
 }
 
+/* loader styles */
+
 #loader {
   position: absolute;
   top: 45vh;
   left: 50vw;
 }
 
-/* ul {
-  list-style: none;
-} */
+/* pagination styles */
 
-.pagination {
-  background-color: lightgrey;
+#pagination-container {
   display: flex;
   flex-direction: row;
-  list-style: none;
+  justify-content: center;
 }
 
-.pages {
-  padding: 2rem;
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-link {
+  margin: .5rem;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  color: darkslategrey;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #fff;
+}
+
+.active-page-link {
+  color: blue;
+  background-color: lightgrey;
+}
+
+.page-link:hover, .pag-page-by-page:hover {
+  cursor: pointer;
+  border-color: lightgray;
+}
+
+.page-link:active, .pag-page-by-page:active {
+  background-color: yellow;
+}
+
+footer {
+  height: 8rem;
+  background-color: lightgrey;
 }
