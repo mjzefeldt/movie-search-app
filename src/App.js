@@ -14,7 +14,7 @@ class App extends Component {
       data: [],
       current_page: 0,
       total_pages: 0,
-      total_results: null,
+      total_results: 0,
       isLoading: false,
       search: '',
       isError: null,
@@ -106,15 +106,20 @@ class App extends Component {
               list={this.state.data} 
               base_url={this.state.base_url}
               poster_size={this.state.poster_sizes[1]}
+              search={this.state.search}
           />
           <Loader isLoading={this.state.isLoading} />
           <Pagination 
             total_pages={this.state.total_pages}
-            current_page={this.current_page}
+            current_page={this.state.current_page}
             onPageChange={this.onPageChange}
+            total_results={this.state.total_results}
           />
           <footer>
-            <p>Thank you for your consideration!</p>
+            <div>
+              <p>Created by MJ Zefeldt for Pearachute</p>
+              <p>Thank you for your consideration!</p>
+            </div>
           </footer>
       </Fragment>
     );

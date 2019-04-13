@@ -19,8 +19,8 @@ function List({list, base_url, poster_size}) {
                 rating={parseFloat(item.vote_average)}
                 widgetDimensions="1rem"
                 widgetSpacings=".25rem"
-                widgetRatedColors="yellow"
-                widgetEmptyColors="grey"
+                widgetRatedColors="#FFDC00"
+                widgetEmptyColors="lightgrey"
               >
                 <Ratings.Widget />
                 <Ratings.Widget />
