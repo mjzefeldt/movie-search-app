@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-// import Header from './components/Header';
 import Main from './components/Main';
 import Loader from './components/Loader';
 import Pagination from './components/Pagination';
@@ -75,7 +74,6 @@ class App extends Component {
     const page = parseInt(data.selected, 10) + 1;
     
     if (page !== this.current_page) {
-      console.log('firing on page change')
       this.setState({isLoading: true}); 
       const url= `https://api.themoviedb.org/3/search/movie?api_key=${KEY.key}&language=en-US&query=${this.state.search}&page=${page.toString()}&include_adult=false`;
       

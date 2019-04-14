@@ -1,20 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-class Loader extends Component {
-    // constructor(props) {
-    //   super(props)
-    // }
-    
-    render() {
+function Loader ({isLoading}) {
 
       return (
         <Fragment>
           <div id="loader">
-            {this.props.isLoading && <div>Loading...</div>}
+            {isLoading && <div>Loading...</div>}
           </div>
         </Fragment>
       )
-    }
 }
 
 export default Loader;

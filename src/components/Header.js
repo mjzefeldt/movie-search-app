@@ -10,7 +10,7 @@ function Header({onSearchChange}) {
                 <div id="search-container">
                     <FontAwesomeIcon id="search-icon" icon={faSearch} color="#fff" size="xs" /> 
                     <input type="search" id="movie-search" name="movie-search" 
-                        size="27" 
+                        size="40" 
                         placeholder="Find movies by title or key word..."
                         onChange={onSearchChange}
                     />

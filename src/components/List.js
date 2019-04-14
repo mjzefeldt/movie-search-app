@@ -31,7 +31,7 @@ function ListItem ({item, base_url, poster_size}) {
           <Ratings.Widget />
           <Ratings.Widget />
         </Ratings>
-        <p>{item.vote_count} votes</p>
+        <p>{item.vote_average} stars - {item.vote_count} votes</p>
       </div>
     </div>
   )
