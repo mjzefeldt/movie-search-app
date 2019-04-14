@@ -1,68 +1,42 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Movie Search App
+Simple movie search app created with React. Allows user to search for movie via text search. App uses search text to query MovieDB API, version 3.
 
-In the project directory, you can run:
+## Getting Started
+Fork and/or clone to local machine. Run `npm install` to install below dependencies (under Prerequisites) AND create-react-app.
 
-### `npm start`
+Run `npm start` to run application in browswer via localhost on port 3000.
+Run `npm test` to run tests in terminal.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisite Dependencies (if want to run one by one rather than npm install)
+`npm install axios`
+Alternative to fetch. Advantages: Returns JSON response and may require less work to handle all errors from failed promise. (ie 404s may not be caught)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`npm install react-ratings-declarative`
+React component module that uses props to build rating stars.
 
-### `npm test`
+`npm install react-paginate`
+React component that uses props to build pagination UI.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm install @fortawesome/fontawesome-svg-core`
+`npm install @fortawesome/free-solid-svg-icons`
+`npm install @fortawesome/react-fontawesome`
+Icons as font - used for search icon.
 
-### `npm run build`
+`npm install enzyme enzyme-adapter-react-16 react-test-renderer`
+Additional testing tools.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Challenges and Design Decisions
+1. MovieDB query results - I was initially unsure how MovieDB query determined order and selection for movie query results. Eventually found confirmation in forum that results are returned via a 'relevancy' to query text determination with a 'popularity' boost. [https://www.themoviedb.org/talk/5339fe0ac3a3680e7f006a90] See #1 on Future Improvements below.
+2. Search bar placement - Experimented with placing search bar in sticky header that remains attached to top window as user scrolls down to view results on current page, acting more like a fixed header. 
+..* Conceptually, this would allow user to adjust query text if determine results are not narrow enough when reach bottom of page (after 20 results) without needing to scroll back up. Theorize that user may do this after 20 results if also see that total results and total pages in pagination display are too broad. Would require A/B testing to confirm/refute theory. ..* Chose sticky position property over fixed position to keep Header component in DOM flow as wanted to avoid absolute positioning and maximize use of flex layout. Sticky positioned Header would only remain visible until bottom of Main component (which contained List component) if Main component acted as container. So, placed Header into Main. Tradeoff - This compromised my initial component hierarchy for Header, Main, and footer to act as siblings.
+3. Movie results as cards in flex layout - Formatted individual results into card layout to allow user to see as many results on screen as possible. Flex layout makes results liquid for many desktop viewport sizes. (Assuming desktop and separate apps for mobile.)  
+4. Pagination vs. infinite scrolling - Based on preliminary review of UX articles on issue, decided to implement pagination rather than infinite scrolling. Infinite scrolling ideal for user generated social content constantly renewing and no guarantee see everything. Pagination ideal for searching for specific item, like favorite movie. (Assuming desktop - mobile will have different considerations and likely benefit from 'load more' pattern.) Used react-paginate module to construct pagination UI. Utilized props for breaklabel that allow users to skip five pages ahead (or back) when click ellipses. Some concern about clarity to user although rest of paginate UI is standard and likely familiar. 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Future Improvements
+1. Search Results Ordering Options - Movie DB docs for v3 note query results are optimized for ordering by relevancy. User may wish to further analyze results based on star rating, title alphabetical order, etc. These can be accompolished either with more specific query or handled client side.
+2. Handling for individual movie search results with missing images, descriptions, etc.
+3. Custom Loader and animations - Make more visible and animated. Fade out over results after they return for smoother experience.
+4. Animated transitions for movie search results as load in/out.
+5. Better branding design considerations re color palette, use of shadow vs. flat design, etc.
