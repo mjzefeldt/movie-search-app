@@ -41,3 +41,9 @@ Additional testing tools.
 3. Custom Loader and animations - Make more visible and animated. Fade out over results after they return for smoother experience.
 4. Animated transitions for movie search results as load in/out.
 5. Better branding design considerations re color palette, use of shadow vs. flat design, etc.
+
+## App Screenshots
+
+![movie-search app initial state](movie-search-001.png)
+![movie-search app search star wars](movie-search-002.png)
+![movie-search app bottom of page 1 search star wars](movie-search-003.png)
